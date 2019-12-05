@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 # Declare all the rooms
 
 room = {
@@ -38,16 +39,53 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-
-new_player = Player('Brandon', room['outside'])
+players_name = input("Welcome player!! What is your name?: ")
+new_player = Player(players_name, room['outside'])
 
 # Write a loop that:
 #
 # * Prints the current room name
+print(f"Current location: { new_player.current_room.name }")
 # * Prints the current description (the textwrap module might be useful here).
+print(new_player.current_room.description)
 # * Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+user_choice = ''
+while user_choice != 'q':
+    user_choice = input("Choose a direction to move.  Enter n, s, e, or w: ")
+    if user_choice == 'n':
+        if hasattr(new_player.current_room, 'n_to'):
+            new_player.current_room = new_player.current_room.n_to
+            print(f"Current location: { new_player.current_room.name }")
+            print(new_player.current_room.description)
+        else:
+            print("You cannot move in that direction.")
+    elif user_choice == 's':
+        if hasattr(new_player.current_room, 's_to'):
+            new_player.current_room = new_player.current_room.s_to
+            print(f"Current location: { new_player.current_room.name }")
+            print(new_player.current_room.description)
+        else:
+            print("You cannot move in that direction.")
+    elif user_choice == 'e':
+        if hasattr(new_player.current_room, 'e_to'):
+            new_player.current_room = new_player.current_room.e_to
+            print(f"Current location: { new_player.current_room.name }")
+            print(new_player.current_room.description)
+        else:
+            print("You cannot move in that direction.")
+    elif user_choice == 'w':
+        if hasattr(new_player.current_room, 'w_to'):
+            new_player.current_room = new_player.current_room.w_to
+            print(f"Current location: { new_player.current_room.name }")
+            print(new_player.current_room.description)
+        else:
+            print("You cannot move in that direction.")
+    elif user_choice == 'q':
+        print("Leaving the game.")
+    else:
+        print("That is not a valid direction.")
