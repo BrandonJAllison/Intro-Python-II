@@ -34,7 +34,15 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
-#
+#Creating Some Items 
+battle_axe= Item("battle axe", "This battle axe will take down the toughest of enemies with one strike")
+armor = Item("armor", "This armor was forged in the fires deep within the earth")
+wooden_shield = Item("wooden shield", "The sheild will protect you from enemies attacks")
+
+#Adding items to rooms
+room['narrow'].items = [battle_axe]
+room['overlook'].items = [armor]
+room['foyer'].items = [wooden_shield]
 # Main
 #
 
