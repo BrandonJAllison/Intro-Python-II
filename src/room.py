@@ -8,9 +8,13 @@ class Room:
         self.s_to = None
         self.e_to = None
         self.w_to = None
+        self.items = []
 
-        
+
 
     def __str__(self):
-        return f'Room: {self.name}\Description: {self.description}'
+        room_items =  f'Room: {self.name}\n Description: {self.description}'
         
+        for i in self.items:
+            room_items += f'Available Items: {i}. {i.description}'
+        return room_items
